@@ -1,17 +1,8 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Logo from "../../assets/logo.svg";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import colors from "../../utils/style/colors.jsx";
 
-const StyledLink = styled(Link)`
-  color: ${colors.secondary};
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  padding: 0 28px;
-  font-size: 24px;
-`;
+import NavigationLink from "../NavigationLink/index.jsx";
 
 const StyledHeader = styled.div`
   display: flex;
@@ -24,15 +15,19 @@ const StyledLogo = styled.img`
   width: 210px;
 `;
 
-const StyledNav = styled.nav``;
+const StyledNav = styled.nav`
+  .active {
+    text-decoration: underline;
+  }
+`;
 
 function Header() {
   return (
     <StyledHeader>
       <StyledLogo src={Logo} alt="Logo" />
       <StyledNav>
-        <StyledLink to="/">Accueil</StyledLink>
-        <StyledLink to="/about">A propos</StyledLink>
+        <NavigationLink to="/" title="Accueil"></NavigationLink>
+        <NavigationLink to="/about" title="A propos"></NavigationLink>
       </StyledNav>
     </StyledHeader>
   );

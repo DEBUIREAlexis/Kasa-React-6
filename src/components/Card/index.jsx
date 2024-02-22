@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import colors from "../../utils/style/colors";
+import { Link } from "react-router-dom";
 
 const StyledDiv = styled.div`
   background-color: ${colors.primary};
@@ -24,9 +25,11 @@ const StyledTitle = styled.h2`
 
 function Card({ id, title, cover }) {
   return (
-    <StyledDiv key={id} style={{ backgroundImage: `url(${cover})` }}>
-      <StyledTitle>{title}</StyledTitle>
-    </StyledDiv>
+    <Link to={"/housing/" + id} id={id}>
+      <StyledDiv key={id} style={{ backgroundImage: `url(${cover})` }}>
+        <StyledTitle>{title}</StyledTitle>
+      </StyledDiv>
+    </Link>
   );
 }
 

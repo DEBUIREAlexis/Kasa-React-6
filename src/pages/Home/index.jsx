@@ -41,7 +41,7 @@ function Home() {
       <StyledTitle>Chez vous, partout et ailleurs</StyledTitle>
       <StyledSection>
         {data.map(({ id, title, cover }) => (
-          <StyledCard key={id} title={title} cover={cover} />
+          <StyledCard key={id} id={id} title={title} cover={cover} />
         ))}
       </StyledSection>
     </StyledMain>
