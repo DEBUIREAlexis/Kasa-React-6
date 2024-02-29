@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import Logo from "../../assets/logo.svg";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import NavigationLink from "../NavigationLink/index.jsx";
 
@@ -9,10 +8,16 @@ const StyledHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   margin: 45px 100px 50px 100px;
+  @media (max-width: 800px) {
+    margin: 20px 20px 27px 20px;
+  }
 `;
 
 const StyledLogo = styled.img`
   width: 210px;
+  @media (max-width: 800px) {
+    width: 145px;
+  }
 `;
 
 const StyledNav = styled.nav`

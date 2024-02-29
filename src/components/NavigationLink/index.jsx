@@ -11,6 +11,11 @@ const StyledNavLink = styled(NavLink)`
   font-size: 24px;
   text-decoration: none;
   ${(props) => props.$isActive && `text-decoration: underline;`}
+  @media (max-width: 800px) {
+    font-size: 12px;
+    text-transform: uppercase;
+    padding: 0 0 0 26px;
+  }
 `;
 
 function NavigationLink({ to, title }) {

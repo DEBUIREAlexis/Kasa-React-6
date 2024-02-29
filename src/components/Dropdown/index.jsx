@@ -6,7 +6,8 @@ import { useState } from "react";
 
 const StyledDropdown = styled.div`
   background-color: ${colors.cards_background};
-  margin: 30px 108px;
+
+  width: 100%;
 `;
 
 const StyledDiv = styled.div`
@@ -19,10 +20,17 @@ const StyledDiv = styled.div`
   font-weight: 700;
   padding: 10px 20px 8px 15px;
   position: relative;
+  @media (max-width: 800px) {
+    font-size: 13px;
+    padding: 0px;
+  }
 `;
 
 const StyledTitle = styled.p`
   margin: 0;
+  @media (max-width: 800px) {
+    padding: 7px 10px;
+  }
 `;
 
 const StyledIcon = styled(FontAwesomeIcon)`
@@ -32,6 +40,10 @@ const StyledIcon = styled(FontAwesomeIcon)`
   transition-property: transform;
   transition-duration: 400ms;
   transform: rotate(${({ rotate }) => rotate});
+  @media (max-width: 800px) {
+    margin: 0 10px 0 0;
+    height: 30px;
+  }
 `;
 
 const StyledParagraphDiv = styled.ul`
@@ -41,60 +53,53 @@ const StyledParagraphDiv = styled.ul`
   position: relative;
   transition: all 330ms ease-in-out;
   max-height: ${({ open }) => (open ? "400px" : "0px")};
+  font-weight: 400;
   overflow: hidden;
   clip-path: border-box;
   padding: 0;
   margin: 0;
   list-style: none;
+  padding: ${({ open }) => (open ? "16px 20px 20px 20px" : "0px")};
+  @media (max-width: 800px) {
+    font-size: 12px;
+  }
 `;
 
 const StyledDescription = styled.li`
   transition: all 330ms ease-in-out;
   transform: translateY(${({ open }) => (open ? "0" : "-150px")});
-  margin: 20px 20px;
 `;
 
 function Dropdown({ title, description }) {
   const [open, setOpen] = useState(false);
   const [rotate, setRotate] = useState("0");
 
-  if (Array.isArray(description)) {
-    return (
-      <StyledDropdown>
-        <StyledDiv>
-          <StyledTitle>{title}</StyledTitle>
-          <StyledIcon
-            icon={faAngleUp}
-            onClick={() => handleClick(open)}
-            rotate={rotate}
-          />
-        </StyledDiv>
-        <StyledParagraphDiv open={open}>
-          {description.map((singleDescription) => (
+  const isArray = Array.isArray(description);
+
+  return (
+    <StyledDropdown>
+      <StyledDiv>
+        <StyledTitle>{title}</StyledTitle>
+        <StyledIcon
+          icon={faAngleUp}
+          onClick={() => handleClick(open)}
+          rotate={rotate}
+        />
+      </StyledDiv>
+      <StyledParagraphDiv open={open}>
+        {isArray ? (
+          description.map((singleDescription) => (
             <StyledDescription open={open} key={singleDescription}>
               {singleDescription}
             </StyledDescription>
-          ))}
-        </StyledParagraphDiv>
-      </StyledDropdown>
-    );
-  } else {
-    return (
-      <StyledDropdown>
-        <StyledDiv>
-          <StyledTitle>{title}</StyledTitle>
-          <StyledIcon
-            icon={faAngleUp}
-            onClick={() => handleClick(open)}
-            rotate={rotate}
-          />
-        </StyledDiv>
-        <StyledParagraphDiv open={open}>
+          ))
+        ) : (
           <StyledDescription open={open}>{description}</StyledDescription>
-        </StyledParagraphDiv>
-      </StyledDropdown>
-    );
-  }
+        )}
+      </StyledParagraphDiv>
+    </StyledDropdown>
+  );
+
   function handleClick() {
     if (open === true) {
       setOpen(false);

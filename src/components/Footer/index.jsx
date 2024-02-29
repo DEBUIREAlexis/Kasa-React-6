@@ -10,6 +10,9 @@ const StyledFooter = styled.footer`
   align-items: center;
   justify-content: space-between;
   height: 209px;
+  @media (max-width: 800px) {
+    justify-content: start;
+  }
 `;
 
 const StyledLogo = styled.img`
@@ -20,7 +23,13 @@ const StyledLogo = styled.img`
 const StyledText = styled.p`
   margin: 0 0 29px 0;
   font-size: 24px;
-  line-height: 34px;
+  line-height: 142%;
+  @media (max-width: 800px) {
+    font-size: 12px;
+    margin: 12px 0 0 0;
+    width: 105px;
+    text-align: center;
+  }
 `;
 
 function Footer() {
