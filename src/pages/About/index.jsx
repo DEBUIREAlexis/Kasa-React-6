@@ -36,6 +36,7 @@ const StyledDropdownWrap = styled.div`
   @media (max-width: 800px) {
     width: 100%;
     gap: 20px;
+    margin: 19px 0;
   }
 `;
 
