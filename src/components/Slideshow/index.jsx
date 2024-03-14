@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import colors from "../../utils/style/colors";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
-import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+
 import { useState } from "react";
+import vector_right from "../../assets/vector_right.svg";
+import vector_left from "../../assets/vector_left.svg";
 
 const StyledCarousel = styled.div`
   height: 415px;
@@ -32,7 +32,7 @@ const StyledCarousel = styled.div`
   }
 `;
 
-const StyledIcon = styled(FontAwesomeIcon)`
+const StyledIcon = styled.img`
   color: ${colors.background};
   height: 96px;
   cursor: pointer;
@@ -59,7 +59,7 @@ function Slideshow(pictures) {
       style={{ backgroundImage: `url(${pictures.picture[currentImg]})` }}
     >
       <StyledIcon
-        icon={faChevronLeft}
+        src={vector_left}
         onClick={() => checkOutOfBound(-1)}
         className={moreThanOneImage}
       />
@@ -67,7 +67,7 @@ function Slideshow(pictures) {
         {currentImg + 1}/{pictures.picture.length}
       </p>
       <StyledIcon
-        icon={faChevronRight}
+        src={vector_right}
         onClick={() => checkOutOfBound(+1)}
         className={moreThanOneImage}
       />

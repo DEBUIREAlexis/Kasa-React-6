@@ -1,12 +1,18 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
+import star_active from "../../assets/star_active.svg";
+import star_inactive from "../../assets/star_inactive.svg";
+import styled from "styled-components";
+
+const StyledImg = styled.img`
+  height: 25px;
+  @media (max-width: 800px) {
+    height: 14px;
+  }
+`;
 
 function SingleStar(active) {
-  let colorStar = "stars star-inactive ";
   if (active.star) {
-    colorStar = "stars star-active";
-  }
-  return <FontAwesomeIcon icon={faStar} className={colorStar} />;
+    return <StyledImg src={star_active} alt="star"></StyledImg>;
+  } else return <StyledImg src={star_inactive} alt="star"></StyledImg>;
 }
 
 export default SingleStar;

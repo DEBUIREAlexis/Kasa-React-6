@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import colors from "../../utils/style/colors";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleUp } from "@fortawesome/free-solid-svg-icons";
+
 import { useState } from "react";
+import arrow from "../../assets/arrow.svg";
 
 const StyledDropdown = styled.div`
   background-color: ${colors.cards_background};
@@ -33,7 +33,7 @@ const StyledTitle = styled.p`
   }
 `;
 
-const StyledIcon = styled(FontAwesomeIcon)`
+const StyledIcon = styled.img`
   color: ${colors.background};
   height: 32px;
   cursor: pointer;
@@ -81,7 +81,7 @@ function Dropdown({ title, description }) {
       <StyledDiv>
         <StyledTitle>{title}</StyledTitle>
         <StyledIcon
-          icon={faAngleUp}
+          src={arrow}
           onClick={() => handleClick(open)}
           rotate={rotate}
         />
